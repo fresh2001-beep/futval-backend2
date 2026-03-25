@@ -1,10 +1,9 @@
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://fresh2001-beep.github.io');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const key = process.env.FOOTBALL_API_KEY;
-  if (!key) return res.status(400).json({ error: 'Missing API key' });
+  if (!key) return res.status(500).json({ error: 'API key not configured' });
 
   try {
     const response = await fetch('https://api.football-data.org/v4/competitions/PL/teams', {
